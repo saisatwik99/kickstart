@@ -43,7 +43,7 @@ export default () => {
       <Testimonial textOnLeft={true}/>
       <SimpleWithSideImageFAQS/>
       {/* <DownloadApp
-        text={<>People around you are ordering delicious meals using the <HighlightedTextInverse>Treact App.</HighlightedTextInverse></>}
+        text={<>People around you are ordering delicious meals using the <HighlightedTextInverse>travel App.</HighlightedTextInverse></>}
       /> */}
       <Footer />
     </AnimationRevealPage>
