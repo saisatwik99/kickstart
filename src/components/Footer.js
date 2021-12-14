@@ -56,9 +56,6 @@ export default () => {
               <YoutubeIcon />
             </SocialLink>
           </SocialLinksContainer>
-          <CopyrightText>
-            &copy; Copyright 2020, Treact Inc. All Rights Reserved.
-          </CopyrightText>
         </Row>
       </Content>
     </Container>
