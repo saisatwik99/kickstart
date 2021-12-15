@@ -87,16 +87,16 @@ export default ({
 }) => {
   const defaultPlans = [
     {
-      name: "Free Plan",
+      name: "Free Membership",
       durationPrices: ["$0", "$0"],
-      mainFeature: "For Personal Blogs",
-      features: ["30 Templates", "7 Landing Pages", "12 Internal Pages", "Basic Assistance"]
+      mainFeature: "For Personal Purpose",
+      features: ["Explore", "You can Review", "Promote", "Assist"]
     },
     {
-      name: "Pro Plan",
+      name: "Pro Membership",
       durationPrices: ["$49", "$499"],
-      mainFeature: "Suited for Production Websites",
-      features: ["60 Templates", "8 Landing Pages", "22 Internal Pages", "Priority Assistance", "Lifetime Updates"],
+      mainFeature: "For Business Purpose",
+      features: ["Explore & Justify", "Give Reviews and Ratings", "Get Free Stay", "Fast Booking"],
       featured: true
     }
   ];
