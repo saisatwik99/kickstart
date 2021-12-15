@@ -7,7 +7,7 @@ import SignupPage from "pages/Signup.js";
 import PricingPage from "pages/Pricing.js";
 import AboutUsPage from "./components/ExploreCard.js";
 import ContactUsPage from "pages/ContactUs.js";
-import blog from "./components/GridWithFeaturedPost.js"
+import blog from "./components/Blog.js"
 import completePage from './components/CompleteExplore.js';
 
 export const components = {

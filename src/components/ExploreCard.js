@@ -62,100 +62,103 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
 `;
 
 export default ({
-  heading = "Explore the World",
+  heading = "Our Startups",
   tabs = {
-    Adventure: [
+    Fintech: [
       {
         imageSrc:
-          "https://images.unsplash.com/photo-1500579886065-5a7705cbf1f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YWR2ZW50dXJlfGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=500&q=80",
-        title: "Veg Mixer",
-        content: "Tomato Salad & Carrot",
-        price: "$5.99",
+          "https://images.unsplash.com/photo-1551650992-ee4fd47df41f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bW9iaWxlJTIwYXBwc3xlbnwwfDJ8MHx8&auto=format&fit=crop&w=500&q=80",
+        title: "Flinch",
+        content1: "Top Fintch Startup 2021",
+        content2: "Revenue: $5000",
+        price: "$250,000",
         rating: "5.0",
         reviews: "87",
         url: "/explore/item"
       },
       {
         imageSrc:
-          "https://images.unsplash.com/photo-1627477284767-7d815ee1104d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cm9sbGVyJTIwY29hc3RlcnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=500&q=80",
-        title: "Macaroni",
-        content: "Cheese Pizza",
-        price: "$2.99",
+          "https://images.unsplash.com/photo-1587569235549-d768151536b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTU1fHxzdGFydHVwJTIwY29tcGFueSUyMGxvZ298ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        title: "Steward",
+        content1: "Series A Funding",
+        content2: "Revenue: $0",
+        price: "$1M",
         rating: "4.8",
         reviews: "32",
         url: "/explore/item"
       },
       {
         imageSrc:
-          "https://images.unsplash.com/photo-1466443620571-05dc7f99c6e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fG1vdW50YXRpbyUyMGNsaW1iaW5nfGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=500&q=80",
+          "https://images.unsplash.com/photo-1577375729152-4c8b5fcda381?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dGVjaG5vbG9neXxlbnwwfDJ8MHx8&auto=format&fit=crop&w=500&q=80",
         title: "Nelli",
-        content: "Hamburger & Fries",
-        price: "$7.99",
+        content1: "Seed Round",
+        content2: "Revenue: $10000",
+        price: "$3.2M",
         rating: "4.9",
         reviews: "89",
         url: "/explore/item"
       },
       {
         imageSrc:
-          "https://images.unsplash.com/photo-1494947356691-434358cea5a3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHN3aW1taW5nfGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=500&q=80",
-        title: "Jalapeno Poppers",
-        content: "Crispy Soyabeans",
-        price: "$8.99",
+          "https://images.unsplash.com/photo-1515775356328-191f2e02390e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bGVuc3xlbnwwfDJ8MHx8&auto=format&fit=crop&w=500&q=80",
+        title: "Eyespace",
+        content1: "Series A Funding",
+        content2: "Revenue: $1M",
+        price: "$9.2M",
         rating: "4.6",
         reviews: "12",
         url: "/explore/item"
       },
       {
         imageSrc:
-          "https://images.unsplash.com/photo-1519693360201-4e53a8e0d45a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fHN3aW1taW5nfGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=500&q=80",
-        title: "Cajun Chicken",
-        content: "Roasted Chicken & Egg",
-        price: "$7.99",
+          "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Zm9vZHxlbnwwfDJ8MHx8&auto=format&fit=crop&w=500&q=80",
+        title: "Mc Bucks",
+        content1: "Top Food Space 2021",
+        content2: "Revenue: $50,000",
+        price: "$5M",
         rating: "4.2",
         reviews: "19",
         url: "/explore/item"
       },
       {
         imageSrc:
-          "https://images.unsplash.com/photo-1536781747177-b0c7f55e3f28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHN3aW1taW5nfGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=500&q=80",
-        title: "Chillie Cake",
-        content: "Deepfried Chicken",
-        price: "$2.99",
+          "https://images.unsplash.com/photo-1560853667-8a40d2a9fe9c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjExfHxzdGFydHVwJTIwY29tcGFueSUyMGxvZ298ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+        title: "Pangra",
+        content1: "Series B Funding",
+        content2: "Revenue: $0",
+        price: "$10,000",
         rating: "5.0",
         reviews: "61",
         url: "/explore/item"
       },
       {
         imageSrc:
-          "https://images.unsplash.com/photo-1522402836182-92ab48342d71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8aGlsbCUyMHN0YXRpb258ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
-        title: "Guacamole Mex",
-        content: "Mexican Chilli",
-        price: "$3.99",
+          "https://images.unsplash.com/photo-1586041828034-df2aa6f645b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjMwfHxzdGFydHVwJTIwY29tcGFueSUyMGxvZ298ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        title: "Dominion",
+        content1: "Top AI Companies of decade",
+        content2: "Revenue: $3M",
+        price: "$25M",
         rating: "4.2",
         reviews: "95",
         url: "/explore/item"
       },
       {
         imageSrc:
-          "https://images.unsplash.com/photo-1568514328861-5465017e40fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dHJhaW58ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
-        title: "Carnet Nachos",
-        content: "Chilli Crispy Nachos",
-        price: "$3.99",
+          "https://images.unsplash.com/photo-1632965053530-2475c7b91f58?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTZ8fHN0YXJ0dXAlMjBjb21wYW55JTIwbG9nb3xlbnwwfDJ8MHx8&auto=format&fit=crop&w=500&q=80",
+        title: "Roda",
+        content1: "Best work space",
+        content2: "Revenue: $5,000",
+        price: "$500,000",
         rating: "3.9",
         reviews: "26",
         url: "/explore/item"
       }
     ],
-    Beach: getRandomCards(),
-    HillStation: getRandomCards(),
-    Mountions: getRandomCards()
+    AI: getRandomCards(),
+    Food: getRandomCards(),
+    EdTech: getRandomCards()
   }
 }) => {
-  /*
-   * To customize the tabs, pass in data using the `tabs` prop. It should be an object which contains the name of the tab
-   * as the key and value of the key will be its content (as an array of objects).
-   * To see what attributes are configurable of each object inside this array see the example above for "Starters".
-   */
   const tabsKeys = Object.keys(tabs);
   const [activeTab, setActiveTab] = useState(tabsKeys[0]);
 
@@ -223,8 +226,9 @@ export default ({
                     </CardImageContainer>
                     <CardText>
                       <CardTitle>{card.title}</CardTitle>
-                      <CardContent>{card.content}</CardContent>
                       <CardPrice>{card.price}</CardPrice>
+                      <CardContent>{card.content1}</CardContent>
+                      <CardContent>{card.content2}</CardContent>
                     </CardText>
                   </Card>
                 </CardContainer>
@@ -245,83 +249,91 @@ const getRandomCards = () => {
   const cards = [
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-      title: "Chicken Chilled",
-      content: "Chicken Main Course",
-      price: "$5.99",
+        "https://images.unsplash.com/photo-1551650992-ee4fd47df41f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bW9iaWxlJTIwYXBwc3xlbnwwfDJ8MHx8&auto=format&fit=crop&w=500&q=80",
+      title: "Flinch",
+      content1: "Top Fintch Startup 2021",
+      content2: "Revenue: $5000",
+      price: "$250,000",
       rating: "5.0",
       reviews: "87",
-      url: "#"
+      url: "/explore/item"
     },
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1582254465498-6bc70419b607?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-      title: "Samsa Beef",
-      content: "Fried Mexican Beef",
-      price: "$3.99",
-      rating: "4.5",
-      reviews: "34",
-      url: "#"
+        "https://images.unsplash.com/photo-1587569235549-d768151536b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTU1fHxzdGFydHVwJTIwY29tcGFueSUyMGxvZ298ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      title: "Steward",
+      content1: "Series A Funding",
+      content2: "Revenue: $0",
+      price: "$1M",
+      rating: "4.8",
+      reviews: "32",
+      url: "/explore/item"
     },
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1565310022184-f23a884f29da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-      title: "Carnet Nachos",
-      content: "Chilli Crispy Nachos",
-      price: "$3.99",
-      rating: "3.9",
-      reviews: "26",
-      url: "#"
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-      title: "Guacamole Mex",
-      content: "Mexican Chilli",
-      price: "$3.99",
-      rating: "4.2",
-      reviews: "95",
-      url: "#"
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1550461716-dbf266b2a8a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-      title: "Chillie Cake",
-      content: "Deepfried Chicken",
-      price: "$2.99",
-      rating: "5.0",
-      reviews: "61",
-      url: "#"
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327??ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1577375729152-4c8b5fcda381?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dGVjaG5vbG9neXxlbnwwfDJ8MHx8&auto=format&fit=crop&w=500&q=80",
       title: "Nelli",
-      content: "Hamburger & Fries",
-      price: "$7.99",
+      content1: "Seed Round",
+      content2: "Revenue: $10000",
+      price: "$3.2M",
       rating: "4.9",
       reviews: "89",
-      url: "#"
+      url: "/explore/item"
     },
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-      title: "Jalapeno Poppers",
-      content: "Crispy Soyabeans",
-      price: "$8.99",
+        "https://images.unsplash.com/photo-1515775356328-191f2e02390e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bGVuc3xlbnwwfDJ8MHx8&auto=format&fit=crop&w=500&q=80",
+      title: "Eyespace",
+      content1: "Series A Funding",
+      content2: "Revenue: $1M",
+      price: "$9.2M",
       rating: "4.6",
       reviews: "12",
-      url: "#"
+      url: "/explore/item"
     },
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1473093226795-af9932fe5856?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-      title: "Cajun Chicken",
-      content: "Roasted Chicken & Egg",
-      price: "$7.99",
+        "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Zm9vZHxlbnwwfDJ8MHx8&auto=format&fit=crop&w=500&q=80",
+      title: "Mc Bucks",
+      content1: "Top Food Space 2021",
+      content2: "Revenue: $50,000",
+      price: "$5M",
       rating: "4.2",
       reviews: "19",
-      url: "#"
+      url: "/explore/item"
+    },
+    {
+      imageSrc:
+        "https://images.unsplash.com/photo-1560853667-8a40d2a9fe9c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjExfHxzdGFydHVwJTIwY29tcGFueSUyMGxvZ298ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+      title: "Pangra",
+      content1: "Series B Funding",
+      content2: "Revenue: $0",
+      price: "$10,000",
+      rating: "5.0",
+      reviews: "61",
+      url: "/explore/item"
+    },
+    {
+      imageSrc:
+        "https://images.unsplash.com/photo-1586041828034-df2aa6f645b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjMwfHxzdGFydHVwJTIwY29tcGFueSUyMGxvZ298ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      title: "Dominion",
+      content1: "Top AI Companies of decade",
+      content2: "Revenue: $3M",
+      price: "$25M",
+      rating: "4.2",
+      reviews: "95",
+      url: "/explore/item"
+    },
+    {
+      imageSrc:
+        "https://images.unsplash.com/photo-1632965053530-2475c7b91f58?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTZ8fHN0YXJ0dXAlMjBjb21wYW55JTIwbG9nb3xlbnwwfDJ8MHx8&auto=format&fit=crop&w=500&q=80",
+      title: "Roda",
+      content1: "Best work space",
+      content2: "Revenue: $5,000",
+      price: "$500,000",
+      rating: "3.9",
+      reviews: "26",
+      url: "/explore/item"
     }
   ];
 

@@ -69,44 +69,44 @@ export default ({
   posts = [
     {
       postImageSrc:
-        "https://images.unsplash.com/photo-1563784462041-5f97ac9523dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
+        "https://images.unsplash.com/photo-1523800503107-5bc3ba2a6f81?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwY29kZXxlbnwwfDJ8MHx8&auto=format&fit=crop&w=500&q=60",
       authorImageSrc:
         "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.95&w=512&h=512&q=80",
-      title: "Enjoying the beach life while on a vacation",
+      title: "When Building Your No-Code Startup, Be Deliberate",
       description:
-        "Lorem ipsum dolor sit amet, consecteturious adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua now ele.",
-      authorName: "Adam Cuppy",
-      authorProfile: "Vlogger",
+        "The constant hum of FOMO is like some endless background music we’ve learned to live with. Even as you read this, it’s likely you have a minimum of three other tabs open and a slew of notifications popping up on the side of your screen.",
+      authorName: "Adam Patty",
+      authorProfile: "Founder of oslash",
       url: "https://reddit.com",
       featured: true
     },
     {
       postImageSrc:
-        "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
-      title: "Getting the most out of your vacation",
-      authorName: "Aaron Patterson",
-      url: "https://reddit.com"
+        "https://images.unsplash.com/photo-1608500071261-4ca08a2a3b68?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bW9uZXl8ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=768&q=80",
+      title: "Startups are bought, not sold",
+      authorName: "Reed Hastings",
+      url: "#"
     },
     {
       postImageSrc:
-        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
-      title: "Choosing the perfect Safaris in Africa",
-      authorName: "Sam Phipphen",
-      url: "https://reddit.com"
+        "https://images.unsplash.com/photo-1574311229046-4a82e47ca20f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bWFucyUyMHNoYWtpbmclMjB0aGVpciUyMGhhbmRzfGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=768&q=80",
+      title: "How to meet a potential founder",
+      authorName: "Patrick Collison",
+      url: "#"
     },
     {
       postImageSrc:
-        "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
-      title: "Hiking during the monsoon in Asia",
-      authorName: "Tony Hawk",
+        "https://miro.medium.com/max/700/1*F0MCzBLsN-EPnmDsmhjtBg.jpeg",
+      title: "How to solve impossible problems",
+      authorName: "Jennifer Clinehens",
       url: "https://timerse.com"
     },
     {
       postImageSrc:
-        "https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
-      title: "Must carry items while travelling to Thailand",
-      authorName: "Himali Turn",
-      url: "https://timerse.com"
+        "https://miro.medium.com/max/1400/1*53-bB_t7vXMIMcKGFUfqZQ.jpeg",
+      title: "How To Hang On To Maximum Equity In Your Startup",
+      authorName: "Walter white",
+      url: "#"
     }
   ]
 }) => {

@@ -60,23 +60,23 @@ export default () => {
   const cards = [
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1638727228877-d2a79ab75e68?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDQ4fDZzTVZqVExTa2VRfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=768&q=80",
-      type: "MountionTop",
-      pricePerDay: "$99",
-      title: "A Trip to the Bahamas",
+        "https://images.unsplash.com/photo-1592920704646-99d0d6792133?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzJ8fGNvbXBhbnklMjBsb2dvc3xlbnwwfDJ8MHx8&auto=format&fit=crop&w=768&q=80",
+      type: "ARROW HEAD",
+      pricePerDay: "$5M",
+      title: "Coffee Company",
       trendingText: "Trending",
-      durationText: "7 Days Tour",
-      locationText: "Africa"
+      durationText: "7 Days Ago",
+      locationText: "USA"
     },
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1549867679-8f092bfe5329?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDE2OHw2c01WalRMU2tlUXx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=768&q=80",
-      type: "BeachFront",
-      pricePerDay: "$169",
-      title: "A Trop to the victoria Beach",
+        "https://images.unsplash.com/photo-1632965053624-eea7c66017de?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fGNvbXBhbnklMjBsb2dvc3xlbnwwfDJ8MHx8&auto=format&fit=crop&w=768&q=80",
+      type: "DESKNOTEBOOK",
+      pricePerDay: "$8.1M",
+      title: "ED-Tech",
       trendingText: "Trending",
-      durationText: "7 Days Tour",
-      locationText: "United States"
+      durationText: "3 Hours Ago",
+      locationText: "India"
     }
   ];
   return (
@@ -85,13 +85,12 @@ export default () => {
         <ThreeColumn>
           <HeadingColumn>
             <HeadingInfoContainer>
-              <HeadingTitle>Trending <HighlightedText>Destinations</HighlightedText></HeadingTitle>
+              <HeadingTitle>Trending <HighlightedText>Aquasitions</HighlightedText></HeadingTitle>
               <HeadingDescription>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua enim ad minim veniam.
+                Company got their founders
               </HeadingDescription>
               <PrimaryLink>
-                View All Tours <ArrowRightIcon />
+                Get your's <ArrowRightIcon />
               </PrimaryLink>
             </HeadingInfoContainer>
           </HeadingColumn>
@@ -103,7 +102,7 @@ export default () => {
                   <CardHeader>
                     <CardType>{card.type}</CardType>
                     <CardPrice>
-                      <CardPriceAmount>{card.pricePerDay}</CardPriceAmount> per day
+                      <CardPriceAmount>{card.pricePerDay}</CardPriceAmount>
                     </CardPrice>
                   </CardHeader>
                   <CardTitle>{card.title}</CardTitle>

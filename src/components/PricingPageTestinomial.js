@@ -30,22 +30,22 @@ export default ({
       imageSrc:
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80",
       quote:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+        "It's a great platform for selling your startup. After listing True over 50 buyers reach out to us. We could not expected such a strong response from so many buyers so quickly but it helped us to find a new home for our startup. ",
       customerName: "Charlotte Hale"
     },
     {
       imageSrc:
         "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=512&h=512&q=80",
       quote:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+        "I had 15+ folks reach out to me. I was completely blown away by how easy it's been to reach these prospective buyers. We weren't necessarily looking to sell but MicroAcquire has been A+. From start to finish, we were acquired within 30 days at full asking price.",
       customerName: "Adam Cuppy"
     },
     {
       imageSrc:
         "https://images.unsplash.com/photo-1580852300654-03c803a14e24?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4.25&w=512&h=512&q=80",
       quote:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
-      customerName: "Steven Marcetti"
+        "We used kickstart to sell our company and the experience was excellent. They helped us get our listing together and made some tweaks to put it over the top. Once our listing was on the marketplace our calendar was filled with buyer meetings. It's an efficient process that I highly recommend.",
+      customerName: "Steven Nicolas"
     }
   ]
 }) => {

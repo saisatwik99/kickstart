@@ -41,27 +41,27 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
 export default ({
   subheading = "FAQS",
   heading = "You have Questions ?",
-  description = "And we have got answers to all of them. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  description = "And we have got answers to all of them.",
   faqs = [
     {
-      question: "Is lunch provided free of cost ?",
+      question: "What is Premium Subscription ?",
       answer:
-        "Yes, it is, if you have a membership with us. Otherwise it is charged as per the menu. Some limits do apply as to how much items can be included in your lunch. This limit is enough for any one person and merely exists to discourage abusal of the system."
+        "You get unlimited access for all our services and all our companies which are there in the market place."
     },
     {
-      question: "Do you have 2 Bedroom suites ?",
+      question: "What is Service Subscription ?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "You will get only access to limited companies and also all our services."
     },
     {
-      question: "Are Wi-Fi costs included in the price ?",
+      question: "What services will you provide ?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "We help entreprenuers to aquire a best company. And for founder we help them to sell their company with more value and much faster"
     },
     {
       question: "Where can I reach you for support ?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "We are here to help you. Mail us at service@kickstart.com. Our agent will connect you within 60 min."
     }
   ]
 }) => {

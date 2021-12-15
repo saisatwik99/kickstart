@@ -25,7 +25,6 @@ const Details = tw.div`mt-4 md:mt-0 md:max-w-md mx-4 sm:mx-8 md:mx-4 lg:mx-8`;
 const Subtitle = tw.div`font-bold tracking-wide text-secondary-100`;
 const Title = tw.h4`text-3xl font-bold text-gray-900`;
 const Description = tw.p`mt-2 text-sm leading-loose`;
-const Link = tw.a`inline-block mt-4 text-sm text-primary-500 font-bold cursor-pointer transition duration-300 border-b-2 border-transparent hover:border-primary-500`;
 
 const SvgDotPattern1 = tw(
   SvgDotPatternIcon
@@ -44,32 +43,29 @@ export default () => {
   const cards = [
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1560889021-ef803239616d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2lsaWNvbiUyMHZhbGxleXxlbnwwfDF8MHx8&auto=format&fit=crop&w=500&q=60",
-      subtitle: "Paid",
-      title: "San Francisco",
+        "https://images.unsplash.com/photo-1536412597336-ade7b523ecfc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8dGVjaG5vbG9neXxlbnwwfDF8MHx8&auto=format&fit=crop&w=500&q=60",
+      subtitle: "About",
+      title: "Flinch",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      url: "https://timerse.com"
+        "Flinch is a neobank for the working professionals of today. It comes with a smart, zero balance savings account and features that help you get better with your money."
     },
 
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1592093506632-92ef342e2591?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8c2lsaWNvbiUyMHZhbGxleXxlbnwwfDF8MHx8&auto=format&fit=crop&w=500&q=60",
-      subtitle: "Free",
-      title: "Linkedin, Sunnyvale",
+        "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHRlY2hub2xvZ3l8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      subtitle: "Neobank",
+      title: "Features",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      url: "https://timerse.com"
+        "You get your money in shape: Our auto-bot, FIT, lets you create rules to automate actions like save, pay & remind with a single tap. It’s that easy to stop, pause or modify these rules too!"
     },
 
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1583098344557-9bb5eaa4c560?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXBwbGUlMjBvZmZpY2V8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-      subtitle: "Exclusive",
-      title: "Apple",
+        "https://images.unsplash.com/photo-1495576775051-8af0d10f19b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y29tcGFueSUyMGVtcGxveWVlc3xlbnwwfDF8MHx8&auto=format&fit=crop&w=500&q=60",
+      subtitle: "Employees",
+      title: "Culture",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      url: "https://timerse.com"
+        "An eccentric group of individuals, who genuinely believe they can bring banking into the 21st century."
     }
   ];
 
@@ -77,9 +73,9 @@ export default () => {
     <Container>
       <SingleColumn>
         <HeadingInfoContainer>
-          <HeadingTitle>Silicon Valley</HeadingTitle>
+          <HeadingTitle>Flinch</HeadingTitle>
           <HeadingDescription>
-            Here are some of the most popular events in New York City curated by professionals.
+            More about Flinch.
           </HeadingDescription>
         </HeadingInfoContainer>
 
@@ -91,7 +87,6 @@ export default () => {
                 <Subtitle>{card.subtitle}</Subtitle>
                 <Title>{card.title}</Title>
                 <Description>{card.description}</Description>
-                <Link href={card.url}>See Event Details</Link>
               </Details>
             </Card>
           ))}

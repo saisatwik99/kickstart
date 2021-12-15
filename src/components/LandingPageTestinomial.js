@@ -68,40 +68,35 @@ const DecoratorBlob2 = tw(
 export default ({
   subheading = "",
   heading = "Testimonials",
-  description = "Here are what some of our amazing customers are saying about our hotels & tours. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  description = "Our goal is to help founders and entrepreneurs sell their startups. Trusted by thousands of entrepreneurs and buyers all across the globe.",
   testimonials = null,
   textOnLeft = false
 }) => {
-  /*
-   * You can modify the testimonials shown by modifying the array below or passing in the testimonials prop above
-   * You can add or remove objects from the array as you need.
-   */
   const defaultTestimonials = [
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1512100356356-de1b84283e18?ixlib=rb-1.2.1&auto=format&fit=crop&w=1024&q=80",
+        "https://images.unsplash.com/photo-1535954906091-59dea18fac73?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzB8fGNvbXBhbnklMjBsb2dvc3xlbnwwfDJ8MHx8&auto=format&fit=crop&w=1024&q=80",
       profileImageSrc:
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80",
       quote:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+        "It's a great platform for selling your startup. After listing True over 50 buyers reach out to us. We could not expected such a strong response from so many buyers so quickly but it helped us to find a new home for our startup. ",
       customerName: "Charlotte Hale",
-      customerTitle: "CEO, Delos Inc."
+      customerTitle: "CEO, True Inc."
     },
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1523952578875-e6bb18b26645?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
+        "https://images.unsplash.com/photo-1594230381579-ac3600dbd55c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODh8fGNvbXBhbnklMjBsb2dvc3xlbnwwfDJ8MHx8&auto=format&fit=crop&w=1024&q=80",
       profileImageSrc:
         "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=512&h=512&q=80",
       quote:
-        "Sinor Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+        "I had 15+ folks reach out to me. I was completely blown away by how easy it's been to reach these prospective buyers. We weren't necessarily looking to sell but MicroAcquire has been A+. From start to finish, we were acquired within 30 days at full asking price.",
       customerName: "Adam Cuppy",
-      customerTitle: "Founder, EventsNYC"
+      customerTitle: "Founder, Barbican centre"
     }
   ];
 
   if (!testimonials || testimonials.length === 0) testimonials = defaultTestimonials;
 
-  // useState is used instead of useRef below because we want to re-render when sliderRef becomes available (not null)
   const [imageSliderRef, setImageSliderRef] = useState(null);
   const [textSliderRef, setTextSliderRef] = useState(null);
 
