@@ -16,7 +16,7 @@
     Everything you need to buy and sell startups.
 No hassle. Total anonymity.
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>View Project »</strong></a>
+    <a href="http://travel-saisatwik99.vercel.app/"><strong>View Project »</strong></a>
     <br />
     <br />
     <a href="https://github.com/saisatwik99/kickstart/issues">Open Issue</a>
@@ -46,8 +46,6 @@ No hassle. Total anonymity.
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#Support">Support</a></li>
   </ol>
