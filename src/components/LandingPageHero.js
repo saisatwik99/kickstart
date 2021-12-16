@@ -52,7 +52,7 @@ export default ({
   heading = "Modern React Templates, Just For You",
  description="Our templates are easy to setup, understand and customize. Fully modular components with a variety of pages and components.",
   primaryButtonText="Get Started",
-  primaryButtonUrl="#",
+  primaryButtonUrl="/explore",
   watchVideoButtonText="Watch Video",
   watchVideoYoutubeUrl="https://www.youtube.com/embed/olboi3ttUi8",
   imageSrc=DesignIllustration,
