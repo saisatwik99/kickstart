@@ -49,9 +49,7 @@ No hassle. Total anonymity.
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#Support">Support</a></li>
   </ol>
 </details>
 
@@ -59,8 +57,6 @@ No hassle. Total anonymity.
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 Join 100,000+ entrepreneurs buying and selling startups on the world’s best acquisition marketplace. Get instant access to 100,000+ trusted buyers. Big or small, get your startup acquired at the maximum price in as little as 30 days.
 
