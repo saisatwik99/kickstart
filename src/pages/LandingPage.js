@@ -31,7 +31,7 @@ export default () => {
         imageSrc={"https://images.unsplash.com/photo-1598301257982-0cf014dabbcd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHN0YXJ0dXB8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=100"}
         textOnLeft={false}
       />
-      {/* TabGrid Component also accepts a tabs prop to customize the tabs and its content directly. Please open the TabGrid component file to see the structure of the tabs props.*/}
+      
       <TrendingCard/>
       
       

@@ -1,4 +1,3 @@
-/* A simple iframe wrapper that makes 16:9 responsive embed */
 import React from 'react';
 
 export default ({ url, background="black", className="video" }) => {

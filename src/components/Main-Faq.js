@@ -46,10 +46,7 @@ export default ({
   imageShadow = true,
   faqs = null
 }) => {
-  /*
-   * You can modify FAQs either by modifying the below defaultFaqs array or by passing a custom array of FAQs using
-   * the faqs prop
-   */
+  
   const defaultFaqs = [
     {
       question: "What is Premium Subscription ?",

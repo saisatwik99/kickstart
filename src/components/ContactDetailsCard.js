@@ -50,13 +50,7 @@ const DecoratorBlob = styled(SvgDecoratorBlob3)`
 `;
 
 export default ({ cards = null, heading = "Our Offices", subheading = "Locations", description = "" }) => {
-  /*
-   * This componets has an array of object denoting the cards defined below. Each object in the cards array can have the key (Change it according to your need, you can also add more objects to have more cards in this feature component) or you can directly pass this using the cards prop:
-   *  1) title - the title of the card
-   *  2) description - the description of the card
-   *  If a key for a particular card is not provided, a default value is used
-   */
-
+  
   const defaultCards = [
     {
       title: "Secure",
