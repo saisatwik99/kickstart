@@ -2,7 +2,7 @@ const Trending = require('../models/trending');
 
 exports.getTrending = async (req, res) => {
     const Trendings = await Trending.find();
-    res.send(Trendings);
+    res.send(Object.values(Trendings));
 }
 
 exports.postTrending = async (req, res) => {

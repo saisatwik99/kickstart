@@ -54,6 +54,8 @@ const CardMetaFeature = styled.div`
   }
 `;
 
+
+
 export default () => {
   const cards = [
     {
@@ -77,6 +79,7 @@ export default () => {
       locationText: "India"
     }
   ];
+  
   return (
     <Container>
       <Content>
