@@ -48,7 +48,7 @@ export default ({
   ),
   description = "Search 1,000s of vetted startups to find your perfect match. Derisk potential acquisitions and project returns using key financial metrics. ",
   primaryButtonText = "Learn More",
-  primaryButtonUrl = "https://timerse.com",
+  primaryButtonUrl = "#",
   imageSrc = TeamIllustrationSrc,
   buttonRounded = true,
   imageRounded = true,

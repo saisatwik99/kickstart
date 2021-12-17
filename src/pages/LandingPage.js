@@ -27,7 +27,7 @@ export default () => {
         subheading={<Subheading>Our Vision</Subheading>}
         heading="Discover your dream startup"
         buttonRounded={false}
-        primaryButtonText="/blog"
+        primaryButtonText="See More"
         imageSrc={"https://images.unsplash.com/photo-1598301257982-0cf014dabbcd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHN0YXJ0dXB8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=100"}
         textOnLeft={false}
       />
