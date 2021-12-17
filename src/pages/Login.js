@@ -33,7 +33,7 @@ const SocialButton = styled.a`
   }
 `;
 
-const DividerTextContainer = tw.div`my-12 border-b text-center relative`;
+const DividerTextContainer = tw.div`my-12 border-b border-transparent text-center relative`;
 const DividerText = tw.div`leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform -translate-y-1/2 absolute inset-x-0 top-1/2 bg-transparent`;
 
 const Form = tw.form`mx-auto max-w-xs`;
