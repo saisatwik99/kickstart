@@ -99,7 +99,7 @@ export default ({
         "https://miro.medium.com/max/700/1*F0MCzBLsN-EPnmDsmhjtBg.jpeg",
       title: "How to solve impossible problems",
       authorName: "Jennifer Clinehens",
-      url: "https://timerse.com"
+      url: "#"
     },
     {
       postImageSrc:
