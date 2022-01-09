@@ -8,6 +8,7 @@ import { ReactComponent as LocationIcon } from "feather-icons/dist/icons/map-pin
 import { ReactComponent as TimeIcon } from "feather-icons/dist/icons/clock.svg";
 import { ReactComponent as TrendingIcon } from "feather-icons/dist/icons/trending-up.svg";
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
+import Async from 'react-async';
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
@@ -54,76 +55,71 @@ const CardMetaFeature = styled.div`
   }
 `;
 
+const loadUsers = () =>
+  fetch("https://kickstart-backend.herokuapp.com/admin/trending")
+    .then(res => (res.ok ? res : Promise.reject(res)))
+    .then(res => res.json())
 
 
-export default () => {
-  const cards = [
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1592920704646-99d0d6792133?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzJ8fGNvbXBhbnklMjBsb2dvc3xlbnwwfDJ8MHx8&auto=format&fit=crop&w=768&q=80",
-      type: "ARROW HEAD",
-      pricePerDay: "$5M",
-      title: "Coffee Company",
-      trendingText: "Trending",
-      durationText: "7 Days Ago",
-      locationText: "USA"
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1632965053624-eea7c66017de?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fGNvbXBhbnklMjBsb2dvc3xlbnwwfDJ8MHx8&auto=format&fit=crop&w=768&q=80",
-      type: "DESKNOTEBOOK",
-      pricePerDay: "$8.1M",
-      title: "ED-Tech",
-      trendingText: "Trending",
-      durationText: "3 Hours Ago",
-      locationText: "India"
-    }
-  ];
-  
+function TrendingCard () {
   return (
-    <Container>
-      <Content>
-        <ThreeColumn>
-          <HeadingColumn>
-            <HeadingInfoContainer>
-              <HeadingTitle>Trending <HighlightedText>Aquasitions</HighlightedText></HeadingTitle>
-              <HeadingDescription>
-                Company got their founders
-              </HeadingDescription>
-              <PrimaryLink>
-                Get your's <ArrowRightIcon />
-              </PrimaryLink>
-            </HeadingInfoContainer>
-          </HeadingColumn>
-          {cards.map((card, index) => (
-            <CardColumn key={index}>
-              <Card>
-                <CardImage imageSrc={card.imageSrc} />
-                <CardText>
-                  <CardHeader>
-                    <CardType>{card.type}</CardType>
-                    <CardPrice>
-                      <CardPriceAmount>{card.pricePerDay}</CardPriceAmount>
-                    </CardPrice>
-                  </CardHeader>
-                  <CardTitle>{card.title}</CardTitle>
-                  <CardMeta>
-                    <CardMetaFeature>
-                      <TrendingIcon /> {card.trendingText}
-                    </CardMetaFeature>
-                    <CardMetaFeature>
-                      <TimeIcon /> {card.durationText}
-                    </CardMetaFeature>
-                    <CardMetaFeature>
-                      <LocationIcon /> {card.locationText}
-                    </CardMetaFeature>
-                  </CardMeta>
-                </CardText>
-              </Card>
-            </CardColumn>
-          ))}
-        </ThreeColumn>
-      </Content>
-    </Container>
+    <div>
+      <Async promiseFn={loadUsers}>
+        {({ data, err, isLoading }) => {
+          if (isLoading) return "Loading..."
+          if (err) return `Something went wrong: ${err.message}`
+          if(data)
+            return (
+              <Container>
+                <Content>
+                  <ThreeColumn>
+                    <HeadingColumn>
+                      <HeadingInfoContainer>
+                        <HeadingTitle>Trending <HighlightedText>Aquasitions</HighlightedText></HeadingTitle>
+                        <HeadingDescription>
+                          Company got their founders
+                        </HeadingDescription>
+                        <PrimaryLink>
+                          Get your's <ArrowRightIcon />
+                        </PrimaryLink>
+                      </HeadingInfoContainer>
+                    </HeadingColumn>
+                    {data.map((card, index) => (
+                      <CardColumn key={index}>
+                        <Card>
+                          <CardImage imageSrc={card.imageSrc} />
+                          <CardText>
+                            <CardHeader>
+                              <CardType>{card.type}</CardType>
+                              <CardPrice>
+                                <CardPriceAmount>{card.pricePerDay}</CardPriceAmount>
+                              </CardPrice>
+                            </CardHeader>
+                            <CardTitle>{card.title}</CardTitle>
+                            <CardMeta>
+                              <CardMetaFeature>
+                                <TrendingIcon /> {card.trendingText}
+                              </CardMetaFeature>
+                              <CardMetaFeature>
+                                <TimeIcon /> {card.durationText}
+                              </CardMetaFeature>
+                              <CardMetaFeature>
+                                <LocationIcon /> {card.locationText}
+                              </CardMetaFeature>
+                            </CardMeta>
+                          </CardText>
+                        </Card>
+                      </CardColumn>
+                    ))}
+                  </ThreeColumn>
+                </Content>
+              </Container>
+            );
+        }}
+      </Async>
+    </div>
+    
   );
 };
+
+export default TrendingCard;

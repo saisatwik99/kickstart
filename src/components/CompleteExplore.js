@@ -1,101 +1,131 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState, useEffect } from "react";
 import tw from "twin.macro";
-import { ReactComponent as SvgDotPatternIcon } from "../images/dot-pattern.svg";
-import { SectionHeading as HeadingTitle } from "./misc/Headings.js";
+import styled from "styled-components";
+import { css } from "styled-components/macro"; //eslint-disable-line
+import { SectionHeading, Subheading as SubheadingBase } from "./misc/Headings.js";
+import AnimationRevealPage from "helpers/AnimationRevealPage.js";
+import HeaderTop from "components/light.js";
+import Footer from "./Footer.js";
+import { ReactComponent as CheckboxIcon } from "feather-icons/dist/icons/check-circle.svg";
+import { getProductInfo } from '../API_Calls/Product/getProducts';
 
 const Container = tw.div`relative`;
-
-const SingleColumn = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
-
-const HeadingInfoContainer = tw.div`flex flex-col items-center`;
-const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center max-w-sm`;
-
-const Content = tw.div`mt-16`;
-
-const Card = styled.div(props => [
-  tw`mt-24 md:flex justify-center items-center`,
-  props.reversed ? tw`flex-row-reverse` : "flex-row"
+const ContentWithPaddingXl= tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
+const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
+const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative`;
+const TextColumn = styled(Column)(props => [
+  tw`md:w-6/12 mt-16 md:mt-0`,
+  props.textOnLeft ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`
 ]);
-const Image = styled.div(props => [
-  `background-image: url("${props.imageSrc}");`,
-  tw`rounded md:w-1/2 lg:w-5/12 xl:w-1/3 flex-shrink-0 h-80 md:h-144 bg-cover bg-center mx-4 sm:mx-8 md:mx-4 lg:mx-8`
+
+const Image = styled.img(props => [
+  props.imageRounded && tw`rounded`,
+  props.imageBorder && tw`border`,
+  props.imageShadow && tw`shadow`,
 ]);
-const Details = tw.div`mt-4 md:mt-0 md:max-w-md mx-4 sm:mx-8 md:mx-4 lg:mx-8`;
-const Subtitle = tw.div`font-bold tracking-wide text-secondary-100`;
-const Title = tw.h4`text-3xl font-bold text-gray-900`;
-const Description = tw.p`mt-2 text-sm leading-loose`;
 
-const SvgDotPattern1 = tw(
-  SvgDotPatternIcon
-)`absolute top-0 left-0 transform -translate-x-20 rotate-90 translate-y-8 -z-10 opacity-25 text-primary-500 fill-current w-24`;
-const SvgDotPattern2 = tw(
-  SvgDotPatternIcon
-)`absolute top-0 right-0 transform translate-x-20 rotate-45 translate-y-24 -z-10 opacity-25 text-primary-500 fill-current w-24`;
-const SvgDotPattern3 = tw(
-  SvgDotPatternIcon
-)`absolute bottom-0 left-0 transform -translate-x-20 rotate-45 -translate-y-8 -z-10 opacity-25 text-primary-500 fill-current w-24`;
-const SvgDotPattern4 = tw(
-  SvgDotPatternIcon
-)`absolute bottom-0 right-0 transform translate-x-20 rotate-90 -translate-y-24 -z-10 opacity-25 text-primary-500 fill-current w-24`;
 
-export default () => {
-  const cards = [
+const TextContent = tw.div`lg:py-8 text-center md:text-left`;
+
+const Heading = tw(
+  SectionHeading
+)`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
+const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
+
+
+const SectionHeadingStats = tw.h2`text-4xl sm:text-5xl font-black text-blue-800 tracking-wide text-center`
+const HeadingStats = tw(SectionHeadingStats)`sm:text-3xl md:text-4xl lg:text-5xl `;
+const StatsContainer = tw.div`mt-8 flex flex-col sm:flex-row items-center justify-center flex-wrap max-w-screen-md justify-between mx-auto`
+const Stat = tw.div`flex flex-col text-center p-4 tracking-wide`
+const StatKey = tw.div`text-xl font-medium text-blue-800`
+const StatValue = tw.div`text-4xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-blue-800`
+
+const SectionDescriptionStats = tw.p`mt-4 text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100 max-w-xl`;
+const DescriptionStats = tw(SectionDescriptionStats)`text-gray-400 text-center mx-auto max-w-screen-md text-blue-800`;
+const ContainerStats = tw(Container)`my-8 lg:my-10 bg-purple-100 text-gray-100 -mx-8 px-8`;
+const HeadingContainer = tw.div``;
+const FeatureList = tw.ul`mt-12 leading-loose`;
+const Feature = tw.li`flex items-center`;
+const FeatureIcon = tw(CheckboxIcon)`w-5 h-5 text-primary-500`;
+const FeatureText = tw.p`ml-2 font-medium text-gray-700`;
+
+const SubheadingStats = tw(SubheadingBase)`text-blue-800 text-center`;
+
+export default ({
+  productId
+}) => {
+  const [data, setData] = useState({});
+  const stats = [
     {
-      imageSrc:
-        "https://images.unsplash.com/photo-1536412597336-ade7b523ecfc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8dGVjaG5vbG9neXxlbnwwfDF8MHx8&auto=format&fit=crop&w=500&q=60",
-      subtitle: "About",
-      title: "Flinch",
-      description:
-        "Flinch is a neobank for the working professionals of today. It comes with a smart, zero balance savings account and features that help you get better with your money."
+      key: "Clients",
+      value: (parseInt(data.reviews)*2).toString()+"+",
     },
-
     {
-      imageSrc:
-        "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHRlY2hub2xvZ3l8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-      subtitle: "Neobank",
-      title: "Features",
-      description:
-        "You get your money in shape: Our auto-bot, FIT, lets you create rules to automate actions like save, pay & remind with a single tap. It’s that easy to stop, pause or modify these rules too!"
+      key: "Revenue",
+      value: data.content2,
     },
-
     {
-      imageSrc:
-        "https://images.unsplash.com/photo-1495576775051-8af0d10f19b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y29tcGFueSUyMGVtcGxveWVlc3xlbnwwfDF8MHx8&auto=format&fit=crop&w=500&q=60",
-      subtitle: "Employees",
-      title: "Culture",
-      description:
-        "An eccentric group of individuals, who genuinely believe they can bring banking into the 21st century."
-    }
-  ];
+      key: "Employees",
+      value: (parseInt(data.reviews)*5).toString()+"+",
+    },
+  ]
+
+  useEffect(() => {
+    getProductInfo(productId).then(data => { 
+      setData(data);
+      return data; 
+    });
+  })
 
   return (
+    <AnimationRevealPage>
+      <HeaderTop/>
     <Container>
-      <SingleColumn>
-        <HeadingInfoContainer>
-          <HeadingTitle>Flinch</HeadingTitle>
-          <HeadingDescription>
-            More about Flinch.
-          </HeadingDescription>
-        </HeadingInfoContainer>
-
-        <Content>
-          {cards.map((card, i) => (
-            <Card key={i} reversed={i % 2 === 1}>
-              <Image imageSrc={card.imageSrc} />
-              <Details>
-                <Subtitle>{card.subtitle}</Subtitle>
-                <Title>{card.title}</Title>
-                <Description>{card.description}</Description>
-              </Details>
-            </Card>
+      <TwoColumn>
+        <ImageColumn>
+          <Image css={null} src={data.imageSrc} imageBorder={false} imageShadow={false} imageRounded={true}/>
+        </ImageColumn>
+        <TextColumn textOnLeft={false}>
+          <TextContent>
+          <Heading>{data.title}</Heading>
+              <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Description>
+              <FeatureList>
+                <Feature key={1}>
+                  <FeatureIcon /> 
+                  <FeatureText>{data.content1}</FeatureText>
+                </Feature>
+                <Feature key={2}>
+                  <FeatureIcon />
+                  <FeatureText>{`Price: ${data.price}`}</FeatureText>
+                </Feature>
+                <Feature key={3}>
+                  <FeatureIcon />
+                  <FeatureText>{`Rating: ${data.rating}`}</FeatureText>
+                </Feature>
+              </FeatureList>
+          </TextContent>
+        </TextColumn>
+      </TwoColumn>
+      <ContainerStats>
+      <ContentWithPaddingXl>
+        <HeadingContainer>
+          <SubheadingStats>OUR STATS</SubheadingStats>
+          <HeadingStats>{data.title}</HeadingStats>
+          <DescriptionStats>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</DescriptionStats>
+        </HeadingContainer>
+        <StatsContainer>
+          {stats.map((stat, index) => (
+            <Stat key={index}>
+              <StatValue>{stat.value}</StatValue>
+              <StatKey>{stat.key}</StatKey>
+            </Stat>
           ))}
-        </Content>
-      </SingleColumn>
-      <SvgDotPattern1 />
-      <SvgDotPattern2 />
-      <SvgDotPattern3 />
-      <SvgDotPattern4 />
+        </StatsContainer>
+      </ContentWithPaddingXl>
+      </ContainerStats>
     </Container>
+    <Footer />
+    </AnimationRevealPage>
   );
 };

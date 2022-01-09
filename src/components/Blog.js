@@ -1,19 +1,17 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro";
-import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings";
-import { SectionDescription } from "components/misc/Typography";
+import { SectionHeading } from "components/misc/Headings";
 import { ReactComponent as SvgDotPatternIcon } from "images/dot-pattern.svg";
 import Header from "components/light.js";
 import Footer from "components/Footer.js";
+import { getBlogs } from "../API_Calls/Blog/getBlogs";
 
 const HeadingContainer = tw.div`text-center`;
-const Subheading = tw(SubheadingBase)`mb-4`;
 const Heading = tw(SectionHeading)``;
-const Description = tw(SectionDescription)`mx-auto`;
 
 const Posts = tw.div`mt-12 flex flex-wrap -mr-3 relative`;
 const Post = tw.a`flex flex-col h-full bg-gray-200 rounded`;
@@ -62,66 +60,74 @@ const PostContainer = styled.div`
 const DecoratorBlob1 = tw(SvgDotPatternIcon)`absolute bottom-0 left-0 w-32 h-32 mb-3 ml-3 transform -translate-x-1/2 translate-y-1/2 fill-current text-gray-500 opacity-50`
 const DecoratorBlob2 = tw(SvgDotPatternIcon)`absolute top-0 right-0 w-32 h-32 mt-16 mr-6 transform translate-x-1/2 -translate-y-1/2 fill-current text-gray-500 opacity-50`
 
-export default ({
-  subheading = "",
-  heading = "We love writing.",
-  description = "",
-  posts = [
-    {
-      postImageSrc:
-        "https://images.unsplash.com/photo-1523800503107-5bc3ba2a6f81?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwY29kZXxlbnwwfDJ8MHx8&auto=format&fit=crop&w=500&q=60",
-      authorImageSrc:
-        "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.95&w=512&h=512&q=80",
-      title: "When Building Your No-Code Startup, Be Deliberate",
-      description:
-        "The constant hum of FOMO is like some endless background music we’ve learned to live with. Even as you read this, it’s likely you have a minimum of three other tabs open and a slew of notifications popping up on the side of your screen.",
-      authorName: "Adam Patty",
-      authorProfile: "Founder of oslash",
-      url: "https://reddit.com",
-      featured: true
-    },
-    {
-      postImageSrc:
-        "https://images.unsplash.com/photo-1608500071261-4ca08a2a3b68?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bW9uZXl8ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=768&q=80",
-      title: "Startups are bought, not sold",
-      authorName: "Reed Hastings",
-      url: "#"
-    },
-    {
-      postImageSrc:
-        "https://images.unsplash.com/photo-1574311229046-4a82e47ca20f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bWFucyUyMHNoYWtpbmclMjB0aGVpciUyMGhhbmRzfGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=768&q=80",
-      title: "How to meet a potential founder",
-      authorName: "Patrick Collison",
-      url: "#"
-    },
-    {
-      postImageSrc:
-        "https://miro.medium.com/max/700/1*F0MCzBLsN-EPnmDsmhjtBg.jpeg",
-      title: "How to solve impossible problems",
-      authorName: "Jennifer Clinehens",
-      url: "#"
-    },
-    {
-      postImageSrc:
-        "https://miro.medium.com/max/1400/1*53-bB_t7vXMIMcKGFUfqZQ.jpeg",
-      title: "How To Hang On To Maximum Equity In Your Startup",
-      authorName: "Walter white",
-      url: "#"
+const PaginationContainer = tw.div`max-w-screen-xl py-16 lg:py-24 `;
+const PaginationNav = tw.nav`ml-128 pl-32`;
+const PaginationUl = tw.ul`inline-flex`;
+const PaginationNum = tw.button`h-10 px-5 text-primary-600 transition-colors duration-150 bg-white border border-r-0 border-primary-800 focus:shadow-outline`;
+const PaginationNumActive = tw.button`h-10 px-5 text-white transition-colors duration-150 bg-primary-600 border border-r-0 border-primary-800 focus:shadow-outline`;
+const PaginationPrev = styled.button(props => [
+  tw`h-10 px-5 text-primary-600 transition-colors duration-150 bg-white border border-r-0 border-primary-800 rounded-l-lg`,
+  !props.disabled && tw`focus:shadow-outline hover:bg-blue-100`,
+  props.disabled && tw`cursor-not-allowed`
+])
+const PaginationNext = styled.button(props => [
+  tw`h-10 px-5 text-primary-600 transition-colors duration-150 bg-white border border-primary-800 rounded-r-lg`,
+  !props.disabled && tw`focus:shadow-outline hover:bg-blue-100`,
+  props.disabled && tw`cursor-not-allowed`
+])
+
+
+export default () => {
+  const heading = "We love writing.";
+  const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
+  useEffect(() => {
+    getBlogs(currentPage, 6).then(res => { 
+      setData(res.data);
+      setTotalPages(res.Pagination.totalPages);
+    });
+  })
+  const prevClick = (e) => {
+    e.preventDefault();
+    console.log("I am in prevClick");
+    setCurrentPage(currentPage-1);
+  }
+  const nextClick = (e) => {
+    e.preventDefault();
+    console.log("I am in nextClick");
+    setCurrentPage(currentPage+1);
+  }
+  const pageClick = (num, e) => {
+    e.preventDefault();
+    console.log("I am in pageClick");
+    setCurrentPage(num);
+  }
+  const createPagination = () => {
+    var elements = [];
+    elements.push(<li><PaginationPrev key={-1} disabled={currentPage === 1} onClick={(e) => prevClick(e)}>Prev</PaginationPrev></li>)
+    for(let i = 1; i<=totalPages; i++){
+      if(i === currentPage)
+        elements.push(<li><PaginationNumActive key={i}>{i}</PaginationNumActive></li>);
+      else{
+        elements.push(<li><PaginationNum key={i} onClick={(e) => { console.log(i); pageClick(i, e);} }>{i}</PaginationNum></li>);
+      }
+        
     }
-  ]
-}) => {
+    elements.push(<li><PaginationNext key={-2} disabled={currentPage === totalPages} onClick={(e) => nextClick(e)}>Next</PaginationNext></li>)
+    return elements;
+  }
   return (
     <AnimationRevealPage>
       <Header />
     <Container>
       <ContentWithPaddingXl>
         <HeadingContainer>
-          {subheading && <Subheading>{subheading}</Subheading>}
           {heading && <Heading>{heading}</Heading>}
-          {description && <Description>{description}</Description>}
         </HeadingContainer>
         <Posts>
-          {posts.map((post, index) => (
+          {data.map((post, index) => (
             <PostContainer featured={post.featured} key={index}>
               <Post className="group" href={post.url}>
                 <PostImage imageSrc={post.postImageSrc} />
@@ -143,6 +149,15 @@ export default ({
           <DecoratorBlob2 />
         </Posts>
       </ContentWithPaddingXl>
+      <PaginationContainer>
+        <PaginationNav>
+              <PaginationUl>
+                
+                {createPagination()}
+                
+              </PaginationUl>
+        </PaginationNav>
+      </PaginationContainer>
     </Container>
     <Footer />
     </AnimationRevealPage>

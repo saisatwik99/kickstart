@@ -5,16 +5,24 @@ import { useParams } from 'react-router-dom';
 import LoginPage from "pages/Login.js";
 import SignupPage from "pages/Signup.js";
 import PricingPage from "pages/Pricing.js";
-import AboutUsPage from "./components/ExploreCard.js";
+import ExplorePage from "./components/ExploreCard.js";
+import WishlistPage from "./components/Wishlist.js";
 import ContactUsPage from "pages/ContactUs.js";
 import blog from "./components/Blog.js"
 import completePage from './components/CompleteExplore.js';
+import ServicePage from './components/Service.js';
 
 export const components = {
 
   page: {
+    service: {
+      component:ServicePage
+    },
+    wishlist: {
+      component: WishlistPage
+    },
     explore: {
-      component: AboutUsPage
+      component: ExplorePage
     },
     blog: {
       component: blog
@@ -44,7 +52,7 @@ export default () => {
     let Component = null;
     if(page === "explore" && item != null){
       Component= components["page"]["info"].component
-      return <Component/>
+      return <Component productId = {item} />
         
     }
     else if(page != null) {

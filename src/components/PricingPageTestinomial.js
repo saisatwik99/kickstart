@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
@@ -6,6 +6,7 @@ import { ContentWithPaddingXl, Container } from "components/misc/Layouts.js";
 import { SectionHeading as Heading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-7.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "images/svg-decorator-blob-8.svg";
+import { getPricingTestinomials } from "../API_Calls/Testinomial/getTestinomials";
 
 const Subheading = tw(SubheadingBase)`text-center`;
 const Testimonials = tw.div`flex flex-col lg:flex-row items-center lg:items-stretch`;
@@ -24,38 +25,19 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
 
 export default ({
   subheading = "Testimonials",
-  heading = "Customer's Review",
-  testimonials = [
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80",
-      quote:
-        "It's a great platform for selling your startup. After listing True over 50 buyers reach out to us. We could not expected such a strong response from so many buyers so quickly but it helped us to find a new home for our startup. ",
-      customerName: "Charlotte Hale"
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=512&h=512&q=80",
-      quote:
-        "I had 15+ folks reach out to me. I was completely blown away by how easy it's been to reach these prospective buyers. We weren't necessarily looking to sell but MicroAcquire has been A+. From start to finish, we were acquired within 30 days at full asking price.",
-      customerName: "Adam Cuppy"
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1580852300654-03c803a14e24?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4.25&w=512&h=512&q=80",
-      quote:
-        "We used kickstart to sell our company and the experience was excellent. They helped us get our listing together and made some tweaks to put it over the top. Once our listing was on the marketplace our calendar was filled with buyer meetings. It's an efficient process that I highly recommend.",
-      customerName: "Steven Nicolas"
-    }
-  ]
+  heading = "Customer's Review"
 }) => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    getPricingTestinomials().then(res => setData(res));
+  })
   return (
     <Container>
       <ContentWithPaddingXl>
         {subheading && <Subheading>{subheading}</Subheading>}
         <Heading>{heading}</Heading>
         <Testimonials>
-          {testimonials.map((testimonial, index) => (
+          {data.map((testimonial, index) => (
             <TestimonialContainer key={index}>
               <Testimonial>
                 <Image src={testimonial.imageSrc} />

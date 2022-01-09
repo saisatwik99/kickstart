@@ -13,7 +13,8 @@ import Footer from "components/Footer.js";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { useHistory } from "react-router-dom";
 import jwt from 'jsonwebtoken';
-import { getProducts } from '../API_Calls/Product/getProducts';
+import { getWishlist } from '../API_Calls/Product/getProducts';
+import illustration from "../images/professional-illustration.svg";
 
 const HeaderRow = tw.div`flex justify-between items-center flex-col xl:flex-row`;
 const Header = tw(SectionHeading)``;
@@ -43,6 +44,12 @@ const CardRating = styled.div`
   }
 `;
 
+// const IllustrationContainer = tw.div`sm:rounded-r-lg flex-1 bg-purple-100 text-center hidden lg:flex justify-center`;
+// const IllustrationImage = styled.div`
+//   ${props => `background-image: url("${props.imageSrc}");`}
+//   ${tw`m-12 xl:m-16 w-full max-w-sm bg-contain bg-center bg-no-repeat`}
+// `;
+
 const CardHoverOverlay = styled(motion.div)`
   background-color: rgba(255, 255, 255, 0.5);
   ${tw`absolute inset-0 flex justify-center items-center`}
@@ -63,23 +70,22 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
   ${tw`pointer-events-none -z-20 absolute left-0 bottom-0 h-80 w-80 opacity-15 transform -translate-x-2/3 text-primary-500`}
 `;
 
-// const AlertContainer = tw.div`bg-indigo-900 text-center py-4 lg:px-4 w-64`;
-// const AlertContainerInside = tw.div`p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex`;
-// const AlertSpan1 = tw.span`flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3`;
-// const AlertSpan2 = tw.span`font-semibold mr-2 text-left flex-auto`;
+const ContentWithVerticalPadding = tw.div`py-20 lg:py-24`;
+const Column = tw.div`lg:w-1/2`;
+const IllustrationColumn = tw(Column)`mt-16 lg:mt-0 lg:ml-16`;
+const PrimaryBackgroundContainer = tw.div`-mx-8 px-12 ml-80 text-gray-100`;
+const Image = tw.img`w-144 ml-auto`
+
 const AlertContainer = tw.div`flex bg-blue-100 rounded-lg p-4 mb-4`;
 const AlertPara = tw.p`ml-3 text-sm text-blue-700`;
 const AlertSvg = tw.svg`w-5 h-5 text-blue-700`;
 
-
-
 export default () => {
-  
   
   const history = useHistory()
   const [data, setData] = useState([]);
-  const [alert, setAlert] = useState("Choose the best Startup! You Love.");
-  const heading = "Our Startups";
+  const [alert, setAlert] = useState("Here are the Wishlisted Startups!");
+  const heading = "Wishlist Startups";
   const tabs = data;
   const tabsKeys = Object.keys(tabs);
   const [activeTab, setActiveTab] = useState("Fintech");
@@ -94,13 +100,13 @@ export default () => {
     } else {
       history.replace('/login');
     }
-    getProducts().then(data => setData(data));
+    getWishlist(token).then(data => setData(data));
     
-  }, [activeTab, history]);
+  });
   
-  const addToWishlist = async (productId,e) => {
+  const deleteWishlist = async (productId, e) => {
     e.preventDefault();
-    const response = await fetch("https://kickstart-backend.herokuapp.com/admin/wishlist", {
+    const response = await fetch("https://kickstart-backend.herokuapp.com/admin/wishlist/delete", {
       method: "POST",
       body: JSON.stringify({
         token: localStorage.getItem('token'),
@@ -111,12 +117,14 @@ export default () => {
       }
     })
     const data = await response.json();
+    console.log(data);
     setAlert(data.message);
+    // window.location.href = '/wishlist';
   }
   
   return (
     <AnimationRevealPage>
-      <HeaderTop/>      
+      <HeaderTop/>
       <Container>
         <ContentWithPaddingXl>
           <AlertContainer>
@@ -155,7 +163,7 @@ export default () => {
               initial={activeTab === tabKey ? "current" : "hidden"}
               animate={activeTab === tabKey ? "current" : "hidden"}
             >
-              {tabs[tabKey].map((card, index) => (
+              {tabs[tabKey].length > 0 ? tabs[tabKey].map((card, index) => (
                 <CardContainer key={index}>
                   <Card className="group" initial="rest" whileHover="hover" animate="rest">
                     <CardImageContainer imageSrc={card.imageSrc}>
@@ -179,21 +187,33 @@ export default () => {
                         }}
                         transition={{ duration: 0.3 }}
                       >
-                        <CardButton onClick={(e) => addToWishlist(card._id,e)}>Add to Wishlist</CardButton>
+                        <CardButton onClick={(e) => deleteWishlist(card.productId,e)}>Delete</CardButton>
                       </CardHoverOverlay>
                     </CardImageContainer>
                     <CardText>
-                      <CardTitle href={`/explore/${card._id}`}>{card.title}</CardTitle>
+                      <CardTitle href={`/explore/${card.productId}/`}>{card.title}</CardTitle>
                       <CardPrice>{card.price}</CardPrice>
                       <CardContent>{card.content1}</CardContent>
                       <CardContent>{card.content2}</CardContent>
                     </CardText>
                   </Card>
                 </CardContainer>
-              ))}
+              )) :
+              <PrimaryBackgroundContainer>
+                <ContentWithVerticalPadding >
+                  
+                    <IllustrationColumn>
+                      <Image src={illustration} />
+                    </IllustrationColumn>
+                  
+                </ContentWithVerticalPadding>
+              </PrimaryBackgroundContainer>
+              
+              }
             </TabContent>
           ))}
         </ContentWithPaddingXl>
+        
         <DecoratorBlob1 />
         <DecoratorBlob2 />
       </Container>

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
+import jwt from 'jsonwebtoken';
 
 import useAnimatedNavToggler from "../helpers/useAnimatedNavToggler.js";
 
@@ -28,6 +29,7 @@ export const PrimaryLink = tw(NavLink)`
   px-8 py-3 rounded bg-primary-500 text-gray-100
   hocus:bg-primary-700 hocus:text-gray-200 focus:shadow-outline
   border-b-0
+  cursor-pointer
 `;
 
 export const LogoLink = styled(NavLink)`
@@ -53,11 +55,17 @@ export const DesktopNavLinks = tw.nav`
   hidden lg:flex flex-1 justify-between items-center
 `;
 
-export default ({ roundedHeaderButton = false, logoLink, links, className, collapseBreakpointClass = "lg" }) => {
+export default ({ roundedHeaderButton = false, logoLink, className, collapseBreakpointClass = "lg" }) => {
   
+  const logoutSub = async e => {
+    localStorage.removeItem('token');
+    window.location.href = '/';
+  }
+
   const defaultLinks = [
     <NavLinks key={1}>
       <NavLink href="/explore">Explore</NavLink>
+      <NavLink href="/service">Service</NavLink>
       <NavLink href="/blog">Blog</NavLink>
       <NavLink href="/price">Pricing</NavLink>
       <NavLink href="/contact">Contact Us</NavLink>
@@ -65,6 +73,18 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
         Login
       </NavLink>
       <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/signup">Sign Up</PrimaryLink>
+    </NavLinks>
+  ];
+  const logoutLinks = [
+    <NavLinks key={1}>
+      <NavLink href="/explore">Explore</NavLink>
+      <NavLink href="/wishlist">Wishlist</NavLink>
+      <NavLink href="/service">Service</NavLink>
+      <NavLink href="/blog">Blog</NavLink>
+      <NavLink href="/price">Pricing</NavLink>
+      <NavLink href="/contact">Contact Us</NavLink>
+      
+      <PrimaryLink onClick={(e) => logoutSub(e)} css={roundedHeaderButton && tw`rounded-full`}>Logout</PrimaryLink>
     </NavLinks>
   ];
 
@@ -77,21 +97,42 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
       KICKSTART
     </LogoLink>
   );
-
+  const [isToken, setIsToken] = useState(false);
   logoLink = logoLink || defaultLogoLink;
-  links = links || defaultLinks;
+  useEffect(() => {
+    try {
+      const token = localStorage.getItem('token');
+      if (token) {
+        
+        const user = jwt.decode(token);
+        console.log(user);
+        if(user) {
+          setIsToken(true);
+        } else {
+          localStorage.removeItem('token');
+          setIsToken(false);
+        }
+      } else {
+        setIsToken(false);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+    
+  }, [])
+
 
   return (
     <Header className={className || "header-light"}>
       <DesktopNavLinks css={collapseBreakpointCss.desktopNavLinks}>
         {logoLink}
-        {links}
+        {isToken ? logoutLinks : defaultLinks}
       </DesktopNavLinks>
 
       <MobileNavLinksContainer css={collapseBreakpointCss.mobileNavLinksContainer}>
         {logoLink}
         <MobileNavLinks initial={{ x: "150%", display: "none" }} animate={animation} css={collapseBreakpointCss.mobileNavLinks}>
-          {links}
+          {isToken ? logoutLinks : defaultLinks}
         </MobileNavLinks>
         <NavToggle onClick={toggleNavbar} className={showNavLinks ? "open" : "closed"}>
           {showNavLinks ? <CloseIcon tw="w-6 h-6" /> : <MenuIcon tw="w-6 h-6" />}

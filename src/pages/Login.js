@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { Container as ContainerBase } from "components/misc/Layouts";
 import tw from "twin.macro";
@@ -6,8 +6,6 @@ import styled from "styled-components";
 import {css} from "styled-components/macro"; //eslint-disable-line
 import illustration from "images/login-illustration.svg";
 import logo from "images/logo1.png";
-import googleIconImageSrc from "images/google-icon.png";
-import twitterIconImageSrc from "images/twitter-icon.png";
 import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg";
 
 const Container = tw(ContainerBase)`min-h-screen bg-primary-900 text-white font-medium flex justify-center -m-8`;
@@ -34,7 +32,6 @@ const SocialButton = styled.a`
 `;
 
 const DividerTextContainer = tw.div`my-12 border-b border-transparent text-center relative`;
-const DividerText = tw.div`leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform -translate-y-1/2 absolute inset-x-0 top-1/2 bg-transparent`;
 
 const Form = tw.form`mx-auto max-w-xs`;
 const Input = tw.input`w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0`;
@@ -53,77 +50,102 @@ const IllustrationImage = styled.div`
   ${tw`m-12 xl:m-16 w-full max-w-sm bg-contain bg-center bg-no-repeat`}
 `;
 
-export default ({
-  logoLinkUrl = "#",
+const AlertContainer = tw.div`flex bg-blue-100 rounded-lg p-4 mb-4`;
+const AlertPara = tw.p`ml-3 text-sm text-blue-700`;
+const AlertSvg = tw.svg`w-5 h-5 text-blue-700`;
+
+const AlertContainerRed = tw.div`flex bg-red-100 rounded-lg p-4 mb-4`;
+const AlertParaRed = tw.p`ml-3 text-sm text-red-700`;
+const AlertSvgRed = tw.svg`w-5 h-5 text-red-700`;
+
+
+export default function Login ({
+  logoLinkUrl = "/",
   illustrationImageSrc = illustration,
   headingText = "Sign In To Kickstart",
-  socialButtons = [
-    {
-      iconImageSrc: googleIconImageSrc,
-      text: "Sign In With Google",
-      url: "https://google.com"
-    },
-    {
-      iconImageSrc: twitterIconImageSrc,
-      text: "Sign In With Twitter",
-      url: "https://twitter.com"
-    }
-  ],
   submitButtonText = "Sign In",
-  SubmitButtonIcon = LoginIcon,
-  forgotPasswordUrl = "#",
-  signupUrl = "#",
+  SubmitButtonIcon = LoginIcon
+}) {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [alert, setAlert] = useState("Be exited to explore Startups!");
+  const [red, setRed] = useState(0);
 
-}) => (
-  <AnimationRevealPage>
-    <Container>
-      <Content>
-        <MainContainer>
-          <LogoLink href={logoLinkUrl}>
-            <LogoImage src={logo} />
-          </LogoLink>
-          <MainContent>
-            <Heading>{headingText}</Heading>
-            <FormContainer>
-              <SocialButtonsContainer>
-                {socialButtons.map((socialButton, index) => (
-                  <SocialButton key={index} href={socialButton.url}>
-                    <span className="iconContainer">
-                      <img src={socialButton.iconImageSrc} className="icon" alt=""/>
-                    </span>
-                    <span className="text">{socialButton.text}</span>
-                  </SocialButton>
-                ))}
-              </SocialButtonsContainer>
-              <DividerTextContainer>
-                <DividerText>Or Sign in with your e-mail</DividerText>
-              </DividerTextContainer>
-              <Form>
-                <Input type="email" placeholder="Email" />
-                <Input type="password" placeholder="Password" />
-                <SubmitButton type="submit">
-                  <SubmitButtonIcon className="icon" />
-                  <span className="text">{submitButtonText}</span>
-                </SubmitButton>
-              </Form>
-              <p tw="mt-6 text-xs text-gray-600 text-center">
-                <a href={forgotPasswordUrl} tw="border-b border-gray-500 border-dotted">
-                  Forgot Password ?
-                </a>
-              </p>
-              <p tw="mt-8 text-sm text-gray-600 text-center">
-                Dont have an account?{" "}
-                <a href={signupUrl} tw="border-b border-gray-500 border-dotted">
-                  Sign Up
-                </a>
-              </p>
-            </FormContainer>
-          </MainContent>
-        </MainContainer>
-        <IllustrationContainer>
-          <IllustrationImage imageSrc={illustrationImageSrc} />
-        </IllustrationContainer>
-      </Content>
-    </Container>
-  </AnimationRevealPage>
-);
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const response = await fetch("https://kickstart-backend.herokuapp.com/user/login", {
+      method: "POST",
+      body: JSON.stringify({
+        email: email,
+        password: password
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    const data = await response.json();
+    // setAlert(data.message);
+    console.log(data);
+    localStorage.setItem('token', data.token);
+    if(data.token){
+      window.location.href = '/explore'
+    }
+    
+      setAlert(data.message);
+      setRed(1);
+    
+  }
+
+  return (
+    <AnimationRevealPage>
+      <Container>
+        <Content>
+          <MainContainer>
+            <LogoLink href={logoLinkUrl}>
+              <LogoImage src={logo} />
+            </LogoLink>
+            <MainContent>
+              <Heading>{headingText}</Heading>
+              <FormContainer>
+                
+                <Form onSubmit={handleSubmit}>
+
+                  { !red ? 
+                  <AlertContainer>
+                    <AlertSvg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></AlertSvg>
+                    <AlertPara>
+                      <span class="font-medium">{alert}</span> 
+                    </AlertPara>
+                  </AlertContainer> : 
+                  <AlertContainerRed>
+                    <AlertSvgRed fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></AlertSvgRed>
+                    <AlertParaRed>
+                      <span class="font-medium">{alert}</span> 
+                    </AlertParaRed>
+                  </AlertContainerRed>
+                  } 
+                  <Input type="email" placeholder="Email" onChange={e => setEmail(e.target.value)}/>
+                  <Input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)}/>
+                  <SubmitButton type="submit">
+                    <SubmitButtonIcon className="icon" />
+                    <span className="text">{submitButtonText}</span>
+                  </SubmitButton>
+                </Form>
+                <DividerTextContainer>
+                <SocialButtonsContainer>
+                    <SocialButton key="Signup" href="/signup">
+                      <span className="text">Dont have an account? Sign Up</span>
+                    </SocialButton>
+                </SocialButtonsContainer>
+                </DividerTextContainer>
+              </FormContainer>
+            </MainContent>
+          </MainContainer>
+          <IllustrationContainer>
+            <IllustrationImage imageSrc={illustrationImageSrc} />
+          </IllustrationContainer>
+        </Content>
+      </Container>
+    </AnimationRevealPage>
+  )
+};

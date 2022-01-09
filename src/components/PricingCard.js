@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
-import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-6.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "images/svg-decorator-blob-7.svg";
@@ -54,11 +53,6 @@ const PlanFeatures = styled.div`
   .feature {
     ${tw`mt-5 first:mt-0 font-semibold text-gray-500`}
   }
-`;
-
-const PlanAction = tw.div`px-4 pb-8`;
-const BuyNowButton = styled(PrimaryButtonBase)`
-  ${tw`rounded-full tracking-wider py-4 w-full text-sm hover:shadow-xl transform hocus:translate-x-px hocus:-translate-y-px focus:shadow-outline`}
 `;
 
 const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
@@ -137,9 +131,7 @@ export default ({
                   </span>
                 ))}
               </PlanFeatures>
-              <PlanAction>
-                <BuyNowButton>{primaryButtonText}</BuyNowButton>
-              </PlanAction>
+              
             </Plan>
           ))}
         </PlansContainer>
