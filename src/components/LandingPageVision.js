@@ -41,14 +41,10 @@ const PrimaryButton = styled(PrimaryButtonBase)(props => [
 
 export default ({
   subheading = "Our Expertise",
-  heading = (
-    <>
-      Designed & Developed by <span tw="text-primary-500">Professionals.</span>
-    </>
-  ),
+  heading = "Discover your dream startup",
   description = "Search 1,000s of vetted startups to find your perfect match. Derisk potential acquisitions and project returns using key financial metrics. ",
   primaryButtonText = "Learn More",
-  primaryButtonUrl = "#",
+  primaryButtonUrl = "/explore",
   imageSrc = TeamIllustrationSrc,
   buttonRounded = true,
   imageRounded = true,

@@ -49,10 +49,10 @@ export default ({
   subheading = "ABOUT OUR SERVICES",
   heading = (
     <>
-      Designed & Developed by <span tw="text-primary-500">Professionals.</span>
+      Helping Founders to reach <span tw="text-primary-500">Entrepreneurs.</span>
     </>
   ),
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  description = "Kickstart helps startup founders get more fundings for their ideas, sell their built startups, collaboratively get investments from entrepreneurs easily. We also provide services for startups to reach entrepreneurs and pitch their ideas and promote to get investments.",
   primaryButtonText = "Book a Slot",
   primaryButtonUrl = "#",
   imageSrc = "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",

@@ -75,11 +75,11 @@ function TrendingCard () {
                   <ThreeColumn>
                     <HeadingColumn>
                       <HeadingInfoContainer>
-                        <HeadingTitle>Trending <HighlightedText>Aquasitions</HighlightedText></HeadingTitle>
+                        <HeadingTitle>Trending <HighlightedText>Aquisitions</HighlightedText></HeadingTitle>
                         <HeadingDescription>
                           Company got their founders
                         </HeadingDescription>
-                        <PrimaryLink>
+                        <PrimaryLink href="/explore">
                           Get your's <ArrowRightIcon />
                         </PrimaryLink>
                       </HeadingInfoContainer>

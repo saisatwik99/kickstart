@@ -56,7 +56,7 @@ const DecoratorBlob = styled(SvgDecoratorBlob3)`
   ${tw`pointer-events-none absolute right-0 bottom-0 w-64 opacity-25 transform translate-x-32 translate-y-48 `}
 `;
 
-export default ({ cards = null, heading = "Amazing Features", subheading = "Features", description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." }) => {
+export default ({ cards = null, heading = "Amazing Features", subheading = "Features", description = "We provide services for startups to reach more entrepreneurs and help them get more investments and fundings for their startups." }) => {
  
   const defaultCards = [
     {
@@ -64,11 +64,11 @@ export default ({ cards = null, heading = "Amazing Features", subheading = "Feat
       title: "Secure",
       description: "We strictly only deal with vendors that provide top notch security."
     },
-    { imageSrc: SupportIconImage, title: "24/7 Support" },
-    { imageSrc: CustomizeIconImage, title: "Customizable" },
-    { imageSrc: ReliableIconImage, title: "Reliable" },
-    { imageSrc: FastIconImage, title: "Fast" },
-    { imageSrc: SimpleIconImage, title: "Easy" }
+    { imageSrc: SupportIconImage, title: "24/7 Support", description: "We provide 24/7 support for our customers regarding anything they need help with."},
+    { imageSrc: CustomizeIconImage, title: "Customizable", description: "The deals and the amount of investment can be negotiated and customized."},
+    { imageSrc: ReliableIconImage, title: "Reliable", description: "Reliable for entrepreneurs and will be the only platform for investing in startups."},
+    { imageSrc: FastIconImage, title: "Fast", description: "Payments, investments, and funding processes are fast and quick with kickstart."},
+    { imageSrc: SimpleIconImage, title: "Easy", description: "Easy to use and feels comfortable to anyone new to the platform"}
   ];
 
   if (!cards) cards = defaultCards;

@@ -68,7 +68,7 @@ export default function Login ({
 }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [alert, setAlert] = useState("Be exited to explore Startups!");
+  const [alert, setAlert] = useState("Be excited to explore Startups!");
   const [red, setRed] = useState(0);
 
   const handleSubmit = async e => {

@@ -89,7 +89,7 @@ export default ({
         <TextColumn textOnLeft={false}>
           <TextContent>
           <Heading>{data.title}</Heading>
-              <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Description>
+              <Description>This company was established by a few members which eventually grew up as a tremendous startup that got great funding and has been doing great with its goals and expectations. This startup would definitely be the one you can definitely rely upon and trust for making great profits.</Description>
               <FeatureList>
                 <Feature key={1}>
                   <FeatureIcon /> 
@@ -112,7 +112,7 @@ export default ({
         <HeadingContainer>
           <SubheadingStats>OUR STATS</SubheadingStats>
           <HeadingStats>{data.title}</HeadingStats>
-          <DescriptionStats>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</DescriptionStats>
+          <DescriptionStats>After thorough research and audits, we find the number of clients the startup has been dealing with and provide all the necessary information about the startup so that entrepreneurs can decide to buy or invest in a particular startup or not.</DescriptionStats>
         </HeadingContainer>
         <StatsContainer>
           {stats.map((stat, index) => (
