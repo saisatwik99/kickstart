@@ -60,7 +60,7 @@ const PostContainer = styled.div`
 const DecoratorBlob1 = tw(SvgDotPatternIcon)`absolute bottom-0 left-0 w-32 h-32 mb-3 ml-3 transform -translate-x-1/2 translate-y-1/2 fill-current text-gray-500 opacity-50`
 const DecoratorBlob2 = tw(SvgDotPatternIcon)`absolute top-0 right-0 w-32 h-32 mt-16 mr-6 transform translate-x-1/2 -translate-y-1/2 fill-current text-gray-500 opacity-50`
 
-const PaginationContainer = tw.div`py-16 lg:py-24 `;
+const PaginationContainer = tw.div` py-16 lg:py-24 `;
 const PaginationUl = tw.ul`flex justify-center`;
 const PaginationNum = tw.button`h-10 px-5 text-primary-600 transition-colors duration-150 bg-white border border-r-0 border-primary-800 focus:shadow-outline`;
 const PaginationNumActive = tw.button`h-10 px-5 text-white transition-colors duration-150 bg-primary-600 border border-r-0 border-primary-800 focus:shadow-outline`;
@@ -82,45 +82,62 @@ export default () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
+  // Page reloads when the current page is changed
   useEffect(() => {
     getBlogs(currentPage, 6).then(res => { 
       setData(res.data);
       setTotalPages(res.Pagination.totalPages);
     });
-  })
+  },[currentPage])
+
   // Prev Button
   const prevClick = (e) => {
     e.preventDefault();
-    console.log("I am in prevClick");
     setCurrentPage(currentPage-1);
   }
   // Next Button
   const nextClick = (e) => {
     e.preventDefault();
-    console.log("I am in nextClick");
     setCurrentPage(currentPage+1);
   }
   // Page Button
   const pageClick = (num, e) => {
     e.preventDefault();
-    console.log("I am in pageClick");
     setCurrentPage(num);
   }
-  // Pagination Function
+
+  // Generates the list of page numbers visible on the pagination bar
+  const visiblePages = (currentPage, totalPages, step) => {
+    let showingNum = 2 * step + 1;
+    let currLeft = currentPage - step;
+    let currRight = currentPage + step;
+
+    if(currentPage - 1 <= step) { currLeft = 1; currRight = currLeft + showingNum - 1; }
+    else if (totalPages - currentPage <= step) { currRight = totalPages; currLeft = currRight - showingNum + 1; }
+
+    return [currLeft, currRight];
+  }
+  
+  // Main Pagination Function
   const createPagination = () => {
-    var elements = [];
+    let elements = []; // Generates list of elements to be rendered
     elements.push(<li><PaginationPrev key={-1} disabled={currentPage === 1} onClick={(e) => prevClick(e)}>Prev</PaginationPrev></li>)
-    for(let i = 1; i<=totalPages; i++){
+
+    let [currLeft, currRight] = visiblePages(currentPage, totalPages, 2);
+
+    for(let i=currLeft; i<=currRight; i++){
       if(i === currentPage)
         elements.push(<li><PaginationNumActive key={i}>{i}</PaginationNumActive></li>);
       else{
-        elements.push(<li><PaginationNum key={i} onClick={(e) => { console.log(i); pageClick(i, e);} }>{i}</PaginationNum></li>);
+        elements.push(<li><PaginationNum key={i} onClick={(e) => { pageClick(i, e);} }>{i}</PaginationNum></li>);
       }
         
     }
+
     elements.push(<li><PaginationNext key={-2} disabled={currentPage === totalPages} onClick={(e) => nextClick(e)}>Next</PaginationNext></li>)
     return elements;
   }
+
   return (
     <AnimationRevealPage>
       <Header />
@@ -153,9 +170,9 @@ export default () => {
         </Posts>
       </ContentWithPaddingXl>
       <PaginationContainer>
-          <PaginationUl>
-            {createPagination()}
-          </PaginationUl>
+        <PaginationUl>
+          {createPagination()}
+        </PaginationUl>
       </PaginationContainer>
     </Container>
     <Footer />
