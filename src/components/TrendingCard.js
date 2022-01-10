@@ -60,7 +60,7 @@ const loadUsers = () =>
     .then(res => (res.ok ? res : Promise.reject(res)))
     .then(res => res.json())
 
-
+// Shows the trending card. Fetch these from Backend
 function TrendingCard () {
   return (
     <div>

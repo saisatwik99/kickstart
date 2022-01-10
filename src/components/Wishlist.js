@@ -44,12 +44,6 @@ const CardRating = styled.div`
   }
 `;
 
-// const IllustrationContainer = tw.div`sm:rounded-r-lg flex-1 bg-purple-100 text-center hidden lg:flex justify-center`;
-// const IllustrationImage = styled.div`
-//   ${props => `background-image: url("${props.imageSrc}");`}
-//   ${tw`m-12 xl:m-16 w-full max-w-sm bg-contain bg-center bg-no-repeat`}
-// `;
-
 const CardHoverOverlay = styled(motion.div)`
   background-color: rgba(255, 255, 255, 0.5);
   ${tw`absolute inset-0 flex justify-center items-center`}
@@ -80,6 +74,7 @@ const AlertContainer = tw.div`flex bg-blue-100 rounded-lg p-4 mb-4`;
 const AlertPara = tw.p`ml-3 text-sm text-blue-700`;
 const AlertSvg = tw.svg`w-5 h-5 text-blue-700`;
 
+// Wishlist Component
 export default () => {
   
   const history = useHistory()
@@ -100,10 +95,11 @@ export default () => {
     } else {
       history.replace('/login');
     }
+    // Get the Wishlisted Startups
     getWishlist(token).then(data => setData(data));
     
   });
-  
+  // Delete the Product
   const deleteWishlist = async (productId, e) => {
     e.preventDefault();
     const response = await fetch("https://kickstart-backend.herokuapp.com/admin/wishlist/delete", {

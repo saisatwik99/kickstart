@@ -1,3 +1,4 @@
+// Product API Calls
 export function getProducts () {
     return fetch("https://kickstart-backend.herokuapp.com/admin/product")
     .then(res => (res.ok ? res : Promise.reject(res)))

@@ -58,7 +58,7 @@ const AlertContainerRed = tw.div`flex bg-red-100 rounded-lg p-4 mb-4`;
 const AlertParaRed = tw.p`ml-3 text-sm text-red-700`;
 const AlertSvgRed = tw.svg`w-5 h-5 text-red-700`;
 
-
+// Login Component
 export default function Login ({
   logoLinkUrl = "/",
   illustrationImageSrc = illustration,
@@ -71,6 +71,7 @@ export default function Login ({
   const [alert, setAlert] = useState("Be excited to explore Startups!");
   const [red, setRed] = useState(0);
 
+  // Login Submit Function
   const handleSubmit = async e => {
     e.preventDefault();
     const response = await fetch("https://kickstart-backend.herokuapp.com/user/login", {

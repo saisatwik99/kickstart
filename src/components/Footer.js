@@ -28,6 +28,7 @@ const SocialLink = styled.a`
   }
 `;
 
+// Footer Component
 export default () => {
   return (
     <Container>

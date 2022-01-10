@@ -55,6 +55,7 @@ export const DesktopNavLinks = tw.nav`
   hidden lg:flex flex-1 justify-between items-center
 `;
 
+// Nav Bar
 export default ({ roundedHeaderButton = false, logoLink, className, collapseBreakpointClass = "lg" }) => {
   
   const logoutSub = async e => {

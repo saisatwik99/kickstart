@@ -37,6 +37,7 @@ const QuestionToggleIcon = styled.span`
 `;
 const Answer = motion(tw.dd`pointer-events-none text-sm sm:text-base leading-relaxed`);
 
+// FAQs Component
 export default ({
   subheading = "",
   heading = "Questions",

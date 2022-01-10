@@ -38,7 +38,7 @@ const PrimaryButton = styled(PrimaryButtonBase)(props => [
   props.buttonRounded && tw`rounded-full`
 ]);
 
-
+// Landing Page ("Discover your dream starup") Component
 export default ({
   subheading = "Our Expertise",
   heading = "Discover your dream startup",

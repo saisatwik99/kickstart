@@ -45,6 +45,7 @@ const AlertContainer = tw.div`flex bg-green-100 rounded-lg p-4 mb-4`;
 const AlertPara = tw.p`ml-3 text-sm text-green-700`;
 const AlertSvg = tw.svg`w-5 h-5 text-green-700`;
 
+// About Our Services Component
 export default ({
   subheading = "ABOUT OUR SERVICES",
   heading = (
@@ -66,6 +67,7 @@ export default ({
   textOnLeft = true
 }) => {
   const [alert, setAlert] = useState("Welcome to Kickstart Service");
+  // Book a Slot Function on Click
   const bookSlot = async (e) => {
     e.preventDefault();
     const response = await fetch("https://kickstart-backend.herokuapp.com/admin/book", {

@@ -23,6 +23,7 @@ function AnimationReveal({ disabled, children }) {
   return <>{childrenWithAnimation}</>;
 }
 
+// Opening Animation Component
 function AnimatedSlideInComponent({ direction = "left", offset = 30, children }) {
   const [ref, inView] = useInView(30);
 

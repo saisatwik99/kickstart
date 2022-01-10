@@ -6,6 +6,7 @@ import Testimonial from "components/PricingPageTestinomial.js";
 import Footer from "components/Footer.js";
 import FAQ from "components/Pricing-Faq.js";
 
+// Price Page Component
 export default () => {
   return (
     <AnimationRevealPage>

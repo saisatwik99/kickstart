@@ -8,6 +8,7 @@ import TrendingCard from "components/TrendingCard.js";
 import Footer from "components/Footer.js";
 import MainFeature1 from "components/LandingPageVision.js";
 
+// Landing Page Component -> Route("/")
 export default () => {
   const Subheading = tw.span`tracking-wider text-sm font-medium`;
   const HighlightedText = tw.span`bg-primary-500 text-gray-100 px-4 transform -skew-x-12 inline-block`;

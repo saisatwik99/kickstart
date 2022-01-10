@@ -12,6 +12,7 @@ import blog from "./components/Blog.js"
 import completePage from './components/CompleteExplore.js';
 import ServicePage from './components/Service.js';
 
+// Routing happens here
 export const components = {
 
   page: {
@@ -45,6 +46,7 @@ export const components = {
   }
 }
 
+// Maps with router with the component
 export default () => {
   const { page, item } = useParams()
 

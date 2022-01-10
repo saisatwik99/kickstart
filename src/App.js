@@ -8,6 +8,7 @@ import MainPage from "pages/LandingPage";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+// App Starts from here
 export default function App() {
 
   return (
