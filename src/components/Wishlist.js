@@ -183,11 +183,11 @@ export default () => {
                         }}
                         transition={{ duration: 0.3 }}
                       >
-                        <CardButton onClick={(e) => deleteWishlist(card.productId,e)}>Delete</CardButton>
+                        <CardButton onClick={(e) => deleteWishlist(card.companyId,e)}>Delete</CardButton>
                       </CardHoverOverlay>
                     </CardImageContainer>
                     <CardText>
-                      <CardTitle href={`/explore/${card.productId}/`}>{card.title}</CardTitle>
+                      <CardTitle href={`/explore/${card.companyId}/`}>{card.title}</CardTitle>
                       <CardPrice>{card.price}</CardPrice>
                       <CardContent>{card.content1}</CardContent>
                       <CardContent>{card.content2}</CardContent>
