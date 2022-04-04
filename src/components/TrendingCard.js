@@ -87,24 +87,24 @@ function TrendingCard () {
                     {data.map((card, index) => (
                       <CardColumn key={index}>
                         <Card>
-                          <CardImage imageSrc={card.imageSrc} />
+                          <CardImage imageSrc={card.image} />
                           <CardText>
                             <CardHeader>
-                              <CardType>{card.type}</CardType>
+                              <CardType>{card.name}</CardType>
                               <CardPrice>
-                                <CardPriceAmount>{card.pricePerDay}</CardPriceAmount>
+                                <CardPriceAmount>{card.price}</CardPriceAmount>
                               </CardPrice>
                             </CardHeader>
-                            <CardTitle>{card.title}</CardTitle>
+                            <CardTitle>{card.type}</CardTitle>
                             <CardMeta>
                               <CardMetaFeature>
                                 <TrendingIcon /> {card.trendingText}
                               </CardMetaFeature>
                               <CardMetaFeature>
-                                <TimeIcon /> {card.durationText}
+                                <TimeIcon /> {card.soldTime}
                               </CardMetaFeature>
                               <CardMetaFeature>
-                                <LocationIcon /> {card.locationText}
+                                <LocationIcon /> {card.location}
                               </CardMetaFeature>
                             </CardMeta>
                           </CardText>

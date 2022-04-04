@@ -95,13 +95,13 @@ export default () => {
   }, [activeTab, history]);
   
   // Add to Wishlist Function
-  const addToWishlist = async (productId,e) => {
+  const addToWishlist = async (companyId,e) => {
     e.preventDefault();
     const response = await fetch("https://kickstart-backend.herokuapp.com/admin/wishlist", {
       method: "POST",
       body: JSON.stringify({
         token: localStorage.getItem('token'),
-        productId
+        companyId
       }),
       headers: {
         "Content-Type": "application/json"

@@ -100,13 +100,13 @@ export default () => {
     
   });
   // Delete the Product
-  const deleteWishlist = async (productId, e) => {
+  const deleteWishlist = async (companyId, e) => {
     e.preventDefault();
     const response = await fetch("https://kickstart-backend.herokuapp.com/admin/wishlist/delete", {
       method: "POST",
       body: JSON.stringify({
         token: localStorage.getItem('token'),
-        productId
+        companyId
       }),
       headers: {
         "Content-Type": "application/json"
