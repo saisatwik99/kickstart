@@ -11,6 +11,7 @@ import ContactUsPage from "pages/ContactUs.js";
 import blog from "./components/Blog.js"
 import completePage from './components/CompleteExplore.js';
 import ServicePage from './components/Service.js';
+import BookingPage from './pages/Book.js';
 
 // Routing happens here
 export const components = {
@@ -42,6 +43,9 @@ export const components = {
     },
     info: {
       component: completePage
+    },
+    book: {
+      component: BookingPage
     }
   }
 }

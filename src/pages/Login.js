@@ -74,7 +74,7 @@ export default function Login ({
   // Login Submit Function
   const handleSubmit = async e => {
     e.preventDefault();
-    const response = await fetch("https://kickstart-backend.herokuapp.com/user/login", {
+    const response = await fetch("http://localhost:5000/user/login", {
       method: "POST",
       body: JSON.stringify({
         email: email,

@@ -58,7 +58,7 @@ export default ({
   const [red, setRed] = useState(0);
   const handleSubmit = async e => {
     e.preventDefault();
-    const response = await fetch("https://kickstart-backend.herokuapp.com/admin/contact", {
+    const response = await fetch("http://localhost:5000/admin/contact", {
       method: "POST",
       body: JSON.stringify({
         email, fullName, subject, message

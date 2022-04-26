@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
@@ -66,22 +66,8 @@ export default ({
   imageDecoratorBlobCss = null,
   textOnLeft = true
 }) => {
-  const [alert, setAlert] = useState("Welcome to Kickstart Service");
+  const alert = "Welcome to Kickstart Service";
   // Book a Slot Function on Click
-  const bookSlot = async (e) => {
-    e.preventDefault();
-    const response = await fetch("https://kickstart-backend.herokuapp.com/admin/book", {
-      method: "POST",
-      body: JSON.stringify({
-        token: localStorage.getItem('token')
-      }),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    const data = await response.json();
-    setAlert(data.message);
-  }
   return (
     <Container>
       <ContentWithPaddingXl>
@@ -102,7 +88,7 @@ export default ({
             <Subheading>{subheading}</Subheading>
             <Heading>{heading}</Heading>
             <Description>{description}</Description>
-            <PrimaryButton buttonRounded={buttonRounded} as="a" onClick={(e) => bookSlot(e)}>
+            <PrimaryButton buttonRounded={buttonRounded} as="a" href = "/book">
               {primaryButtonText}
             </PrimaryButton>
           </TextContent>

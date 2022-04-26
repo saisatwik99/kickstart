@@ -56,7 +56,7 @@ const CardMetaFeature = styled.div`
 `;
 
 const loadUsers = () =>
-  fetch("https://kickstart-backend.herokuapp.com/admin/trending")
+  fetch("http://localhost:5000/admin/trending")
     .then(res => (res.ok ? res : Promise.reject(res)))
     .then(res => res.json())
 
